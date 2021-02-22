@@ -12,9 +12,108 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false, //디버드 띠 없애기
       title: "Appbar",
-      home: ToastEX(),
+      home: NavigatorEX(),
       theme: ThemeData(primarySwatch: Colors.red // 테마 기본 색상이 블루라는 의미
           ),
+    );
+  }
+}
+
+
+class NavigatorEX extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("fisrt page"),
+      ),
+      body: Center(
+        child: RaisedButton(
+          child: Text("go to the second page"),
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => SecondPage()));
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class SecondPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("second page"),
+      ),
+      body: Center(
+        child: RaisedButton(
+          child: Text("go to the first page"),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class ColumnRowEX extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: Colors.teal,
+        body: SafeArea(
+          child: Row(
+            //verticalDirection: VerticalDirection.up,//역순정렬
+            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,//같은 간격을 가짐
+            //mainAxisAlignment: MainAxisAlignment.spaceBetween,//상중하에 배치
+            //crossAxisAlignment: CrossAxisAlignment.end,//가로축 끝 정렬
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            //컬럼 하위 위젯들 모두 가로(or 세로)에 꽉차게 맞춰줌(width 속성 다 지워줘야함)
+            children: <Widget>[
+              Container(
+                width: 100,
+                height: 100,
+                color: Colors.white,
+              ),
+              SizedBox(
+                width: 30.0,
+              ),
+              Container(
+                width: 100,
+                height: 100,
+                color: Colors.red,
+              ),
+              Container(
+                width: 100,
+                height: 100,
+                color: Colors.blue,
+              ),
+            ],
+          ),
+        ));
+  }
+}
+
+class ContainerEX extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.blue,
+      body: SafeArea(
+        //위젯이 화면 밖으로 빠져나가는것을 방지하는 위젯
+        child: Container(
+          //child가 없는경우 컨테이너는 최대한의 자리를 차지함, 자식을 가지게되면 컨테이너는 자식의 크기로 줄어든다.
+          child: Text('hello'),
+          width: 100,
+          height: 100,
+          margin: EdgeInsets.symmetric(vertical: 50, horizontal: 10),
+          padding: EdgeInsets.all(40),
+          color: Colors.redAccent,
+        ),
+      ),
     );
   }
 }
