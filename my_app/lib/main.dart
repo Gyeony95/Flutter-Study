@@ -26,13 +26,9 @@ class MyPage extends StatelessWidget {
         title: Text("Appbar icon menu"),
         centerTitle: true,
         elevation: 0.0,
-        leading:IconButton(//아이콘 버튼이나 간단한 위젯을 왼쪽에 배치할때
-          icon: Icon(Icons.menu), onPressed: () {
-            print('Menu button is clicked');
-        },
-        ),
+
         actions: <Widget>[//복수의 아이콘 버튼을 오른쪽에 배치할 때
-          IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {
+          IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {//버튼 클릭했을때 이벤트 정의 하는곳
             print('shopping_cart button is clicked');
           },),
           IconButton(icon: Icon(Icons.search), onPressed: () {
@@ -41,6 +37,64 @@ class MyPage extends StatelessWidget {
 
 
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+             UserAccountsDrawerHeader(//보통 사용자 정보가 들어가는 상단 박스를 드로어 헤더라고 함
+               currentAccountPicture: CircleAvatar(//내 이미지
+                 backgroundImage: AssetImage('assets/mphoto.jpg'),
+                 backgroundColor: Colors.white,
+               ),
+               otherAccountsPictures: <Widget>[//다른 이미지들
+                 CircleAvatar(
+                   backgroundImage: AssetImage('assets/flutter_logo.png'),
+                   backgroundColor: Colors.white,
+                 ),
+
+               ],
+               accountName: Text("Gyeony"),
+               accountEmail: Text("rlg1133@namver.com"),
+               onDetailsPressed: (){
+                 print("arrow is clicked");
+               },
+               decoration: BoxDecoration(
+                 color: Colors.red[200],
+                 borderRadius: BorderRadius.only(//밑에 둥글게 하는 부분
+                     bottomLeft: Radius.circular(40.0),
+                     bottomRight: Radius.circular(40.0))
+               ),
+             ),
+            ListTile(
+              leading: Icon(Icons.home,color: Colors.grey[850]),
+              title: Text('home'),
+              onTap: (){
+                print('home clicked');
+              },
+              trailing: Icon(Icons.add),
+
+            ),
+            ListTile(
+              leading: Icon(Icons.settings,color: Colors.grey[850]),
+              title: Text('settings'),
+              onTap: (){
+                print('settings clicked');
+              },
+              trailing: Icon(Icons.add),
+
+            ),
+            ListTile(
+              leading: Icon(Icons.question_answer,color: Colors.grey[850]),
+              title: Text('question_answer'),
+              onTap: (){
+                print('question_answer clicked');
+              },
+              trailing: Icon(Icons.add),
+
+            )
+          ],
+        ),
       ),
     );
   }
