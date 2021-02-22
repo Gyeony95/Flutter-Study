@@ -8,14 +8,47 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,//디버드 띠 없애기
-      title: "Character Card",
-      home: Grade(),
+      title: "Appbar",
+      home: MyPage(),
       theme: ThemeData(
-        primarySwatch: Colors.blue// 테마 기본 색상이 블루라는 의미
+        primarySwatch: Colors.red// 테마 기본 색상이 블루라는 의미
       ),
     );
   }
 }
+
+
+class MyPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Appbar icon menu"),
+        centerTitle: true,
+        elevation: 0.0,
+        leading:IconButton(//아이콘 버튼이나 간단한 위젯을 왼쪽에 배치할때
+          icon: Icon(Icons.menu), onPressed: () {
+            print('Menu button is clicked');
+        },
+        ),
+        actions: <Widget>[//복수의 아이콘 버튼을 오른쪽에 배치할 때
+          IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {
+            print('shopping_cart button is clicked');
+          },),
+          IconButton(icon: Icon(Icons.search), onPressed: () {
+            print('search button is clicked');
+          },),
+
+
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
 
 class Grade extends StatelessWidget {
   @override
