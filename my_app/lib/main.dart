@@ -2,6 +2,10 @@
 //import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:my_app/ScreenA.dart';
+import 'package:my_app/ScreenB.dart';
+import 'package:my_app/ScreenC.dart';
+
 
 // 메인 함수 실행하면 최상위 함수인 런앱 실행, 런앱 안에는 위젯이 있어야함
 void main() => runApp(MyApp());
@@ -10,15 +14,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false, //디버드 띠 없애기
-      title: "Appbar",
-      home: NavigatorEX(),
+      //debugShowCheckedModeBanner: false, //디버드 띠 없애기
+      //title: "Appbar",
+      initialRoute: '/',//기본 주소
+      routes: {
+        '/' : (context) => ScreenA(),
+        '/b' : (context) => ScreenB(),
+        '/c' : (context) => ScreenC(),
+      },
       theme: ThemeData(primarySwatch: Colors.red // 테마 기본 색상이 블루라는 의미
           ),
     );
   }
 }
-
 
 class NavigatorEX extends StatelessWidget {
   @override
@@ -32,7 +40,7 @@ class NavigatorEX extends StatelessWidget {
           child: Text("go to the second page"),
           onPressed: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => SecondPage()));
+                context, MaterialPageRoute(builder: (_) => SecondPage()));//필요없는 매개변수를 사용할 때 '_' 를 사용함
           },
         ),
       ),
