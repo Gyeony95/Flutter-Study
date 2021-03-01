@@ -57,9 +57,19 @@ class _HomeState extends State<Home> {
     );
   }
 
-  futureTest(){
-    Future.delayed(Duration(seconds: 3))
-        .then((value) => setState((){this.result = 'the data is fetched';}));
+  Future<void> futureTest() async{
+    await Future.delayed(Duration(seconds: 3))
+        .then((value) {
+      print('here come second');
+      setState((){this.result = 'the data is fetched';
+      print(result);
+      print('here come third');
+      }
+      );
+    });
+
+    print('here comes first');
+    print('here is the last one');
   }
 }
 
