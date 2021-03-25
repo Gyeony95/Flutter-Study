@@ -17,16 +17,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
 
   final http.Client httpClient;
 
-  @override
-  Stream<Transition<PostEvent, PostState>> transformEvents(
-    Stream<PostEvent> events,
-    TransitionFunction<PostEvent, PostState> transitionFn,
-  ) {
-    return super.transformEvents(
-      events.debounceTime(const Duration(milliseconds: 500)),
-      transitionFn,
-    );
-  }
+
 
   @override
   Stream<PostState> mapEventToState(PostEvent event) async* {
