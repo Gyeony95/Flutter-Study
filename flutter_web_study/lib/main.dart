@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_study/home_screen.dart';
 import 'package:flutter_web_study/signup/signup_screen.dart';
+import 'package:flutter_web_study/welcome_screen.dart';
 
 
 void main() {
@@ -15,7 +17,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SignUpApp(),
+      //home: HomePage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomePage(),
+        '/welcome': (context) => WelcomeScreen(),
+      },
     );
   }
 }
