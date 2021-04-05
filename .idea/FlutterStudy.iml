@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/flutter_web_study/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_web_study/build" />
+      <excludeFolder url="file://$MODULE_DIR$/half_spicy/ios/.symlinks/plugins/fluttertoast/build" />
+      <excludeFolder url="file://$MODULE_DIR$/half_spicy/ios/.symlinks/plugins/fluttertoast/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/weather_app/ios/.symlinks/plugins/geolocator/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/weather_app/ios/.symlinks/plugins/geolocator/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/weather_app/ios/.symlinks/plugins/geolocator/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/weather_app/ios/.symlinks/plugins/geolocator/build" />
+      <excludeFolder url="file://$MODULE_DIR$/my_app/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/my_app/build" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_infinite_list/build" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_infinite_list/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc_music/ios/.symlinks/plugins/permission_handler/build" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc_music/ios/.symlinks/plugins/permission_handler/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/weather_app/build" />
+      <excludeFolder url="file://$MODULE_DIR$/weather_app/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/login_ex/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/login_ex/build" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc_music/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc_music/build" />
+      <excludeFolder url="file://$MODULE_DIR$/half_spicy/ios/.symlinks/plugins/fluttertoast/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/half_spicy/ios/.symlinks/plugins/fluttertoast/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/half_spicy/build" />
+      <excludeFolder url="file://$MODULE_DIR$/half_spicy/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/web_test/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/web_test/build" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc_music/ios/.symlinks/plugins/permission_handler/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc_music/ios/.symlinks/plugins/permission_handler/example/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
