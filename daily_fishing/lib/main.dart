@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart' as http;
 
+import 'edit/edit_bloc.dart';
 import 'edit/edit_screen.dart';
 import 'home/home_screen.dart';
 
@@ -22,7 +25,10 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => HomePage(),
-        '/welcome': (context) => EditScreen(),
+        '/welcome': (context) => BlocProvider(
+            create: (_) => EditBloc(httpClient: http.Client()),
+            child: EditScreen()
+        ),
       },
     );
   }
