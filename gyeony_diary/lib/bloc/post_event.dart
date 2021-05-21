@@ -9,3 +9,4 @@ abstract class PostEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+class GetDiaryList extends PostEvent {}

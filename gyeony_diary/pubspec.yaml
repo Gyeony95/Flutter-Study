@@ -32,7 +32,6 @@ dependencies:
   rxdart: ^0.27.0
   bloc_test: ^8.0.0
 
-  syncfusion_flutter_charts: ^19.1.64
 
 
   #http
@@ -48,7 +47,20 @@ dependencies:
   #store
   shared_preferences: ^2.0.5
 
+  #ui
   flutter_slider_drawer: ^2.0.0
+  pull_to_refresh: ^2.0.0
+  flare_flutter: ^3.0.0
+  syncfusion_flutter_charts: ^19.1.64
+
+  #text editor
+  zefyr: ^0.12.0
+  image_picker: ^0.7.5+2
+
+  # Image
+  flutter_svg: ^0.22.0
+  extended_image: ^4.1.0
+  image: ^3.0.2
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -71,9 +83,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/
+    - assets/images/
+    - assets/animations/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
