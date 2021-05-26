@@ -52,6 +52,8 @@ dependencies:
   pull_to_refresh: ^2.0.0
   flare_flutter: ^3.0.0
   syncfusion_flutter_charts: ^19.1.64
+  flutter_spinkit: ^5.0.0
+  flutter_staggered_grid_view: ^0.4.0
 
   #text editor
   zefyr: ^0.12.0
