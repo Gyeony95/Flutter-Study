@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
             create: (_) => PostBloc(PostRepo())..add(GetDiaryList()),
             child: PostScreen())),
         GetPage(name: '/detail', page: () => BlocProvider(
-            create: (_) => DetailBloc(DetailRepo())..add(testtest()),
+            create: (_) => DetailBloc(DetailRepo())..add(GetImageList()),
             child: DetailScreen())),
         //GetPage(name: '/fullPage', page: FullPageEditorScreen())
 

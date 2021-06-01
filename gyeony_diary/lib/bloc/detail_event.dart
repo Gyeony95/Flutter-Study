@@ -6,4 +6,4 @@ abstract class DetailEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
-class testtest extends DetailEvent {}
+class GetImageList extends DetailEvent {}
