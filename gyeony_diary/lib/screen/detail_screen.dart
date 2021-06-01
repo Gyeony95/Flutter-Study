@@ -17,9 +17,6 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var viewWidth = MediaQuery.of(context).size.width;
-    var viewHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       body: Center(
         child: Container(
@@ -36,8 +33,6 @@ class _DetailScreenState extends State<DetailScreen> {
                   itemCount: state.list.length-1,
                   // itemBuilder: (BuildContext context, int index) => CustomTile(index, IntSize(20,40), state.list[index].imageUrl),
                   itemBuilder: (context, index) => Image.asset(state.list[index].imageUrl,fit: BoxFit.fill,),
-                  // staggeredTileBuilder: (int index) =>
-                  //     StaggeredTile.count(2, 1),
                   mainAxisSpacing: 4.0,
                   crossAxisSpacing: 4.0,
                   staggeredTileBuilder: (index) => const StaggeredTile.fit(2),
@@ -48,39 +43,9 @@ class _DetailScreenState extends State<DetailScreen> {
               return Container();
             },
           )
-          // Stack(
-          //   children: [
-          //
-          //     backdropFilter(context,ShadowedCard(
-          //       child: Image.asset(
-          //         'assets/images/default_image2.jpeg',
-          //         height: viewHeight,
-          //         //width: MediaQuery.of(context).size.width,ß
-          //         //fit: BoxFit.none,
-          //       ),
-          //     ),)
-          //   ],
-          // ),
         ),
       ),
     );
   }
 }
 
-Widget backdropFilter(BuildContext context, Widget child) {
-  return Stack(
-    fit: StackFit.expand,
-    children: <Widget>[
-      child,
-      BackdropFilter(
-        filter: ui.ImageFilter.blur(
-          sigmaX: 8.0,
-          sigmaY: 8.0,
-        ),
-        child: Container(
-          color: Colors.transparent,
-        ),
-      )
-    ],
-  );
-}
