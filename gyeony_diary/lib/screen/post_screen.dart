@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gyeony_diary/bloc/post_bloc.dart';
+import 'package:gyeony_diary/bloc/post_event.dart';
 import 'package:gyeony_diary/bloc/post_state.dart';
 import 'package:gyeony_diary/screen/post_widget.dart';
 import 'package:gyeony_diary/widget/flare_progress.dart';
@@ -15,6 +16,14 @@ class PostScreen extends StatefulWidget {
 }
 
 class _PostScreenState extends State<PostScreen> {
+  PostBloc _postBloc;
+
+  @override
+  void initState() {
+    super.initState();
+    _postBloc = context.read<PostBloc>();
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +58,7 @@ class _PostScreenState extends State<PostScreen> {
                           child: const FlareProgress(),
                         );
                       }
-                      return PostItem(model: state.list[index],);
+                      return PostItem(model: state.list[index], openPressed:() =>_postBloc.add(SwitchItemState(index: index)));
                     }
                 ),
               );

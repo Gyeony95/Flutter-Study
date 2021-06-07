@@ -4,11 +4,12 @@ import 'package:gyeony_diary/model/post_model.dart';
 abstract class PostState extends Equatable {
   const PostState();
 
+}
+
+class PostLoading extends PostState {
   @override
   List<Object> get props => [];
 }
-
-class PostLoading extends PostState {}
 
 class PostLoaded extends PostState {
   final List<PostModel> list;
@@ -21,5 +22,6 @@ class PostLoaded extends PostState {
       PostLoaded(
         list: list ?? this.list,
       );
-
+  @override
+  List<Object> get props => [list];
 }

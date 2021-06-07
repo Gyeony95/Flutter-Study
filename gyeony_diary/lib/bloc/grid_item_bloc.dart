@@ -15,28 +15,28 @@ class GridItemBloc extends Bloc<GridItemEvent, GridItemState> {
 
   @override
   Stream<GridItemState> mapEventToState(event) async*{
-    // if(event is GetImageList){
-    //   yield* _mapGetImageListToState(event);
-    // }
+    if(event is GetImageList){
+      yield* _mapGetImageListToState(event);
+    }
   }
-  // Stream<DetailState> _mapGetImageListToState(DetailEvent event) async*{
-  //   yield DetailLoading();
-  //   //여기서 데이터 얻어옴
-  //   List<ImageModel> imageData = [
-  //     ImageModel(imageUrl: 'assets/images/default_image3.jpeg'),
-  //     ImageModel(imageUrl: 'assets/images/default_image.jpeg'),
-  //     ImageModel(imageUrl: 'assets/images/default_image2.jpeg'),
-  //     ImageModel(imageUrl: 'assets/images/default_image.jpeg'),
-  //     ImageModel(imageUrl: 'assets/images/default_image2.jpeg'),
-  //     ImageModel(imageUrl: 'assets/images/default_image3.jpeg'),
-  //     ImageModel(imageUrl: 'assets/images/default_image3.jpeg'),
-  //     ImageModel(imageUrl: 'assets/images/default_image.jpeg'),
-  //     ImageModel(imageUrl: 'assets/images/default_image2.jpeg'),
-  //     ImageModel(imageUrl: 'assets/images/default_image3.jpeg'),
-  //     ImageModel(imageUrl: 'assets/images/default_image.jpeg'),
-  //     ImageModel(imageUrl: 'assets/images/default_image2.jpeg'),
-  //   ];
-  //   yield DetailLoaded(list: imageData);
-  // }
+  Stream<GridItemState> _mapGetImageListToState(GridItemEvent event) async*{
+    yield GridItemLoading();
+    //여기서 데이터 얻어옴
+    List<ImageModel> imageData = [
+      ImageModel(imageUrl: 'assets/images/default_image3.jpeg'),
+      ImageModel(imageUrl: 'assets/images/default_image.jpeg'),
+      ImageModel(imageUrl: 'assets/images/default_image2.jpeg'),
+      ImageModel(imageUrl: 'assets/images/default_image.jpeg'),
+      ImageModel(imageUrl: 'assets/images/default_image2.jpeg'),
+      ImageModel(imageUrl: 'assets/images/default_image3.jpeg'),
+      ImageModel(imageUrl: 'assets/images/default_image3.jpeg'),
+      ImageModel(imageUrl: 'assets/images/default_image.jpeg'),
+      ImageModel(imageUrl: 'assets/images/default_image2.jpeg'),
+      ImageModel(imageUrl: 'assets/images/default_image3.jpeg'),
+      ImageModel(imageUrl: 'assets/images/default_image.jpeg'),
+      ImageModel(imageUrl: 'assets/images/default_image2.jpeg'),
+    ];
+    yield GridItemLoaded(list: imageData);
+  }
 
 }

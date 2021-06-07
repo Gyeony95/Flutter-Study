@@ -12,11 +12,11 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
 
   @override
   Stream<DetailState> mapEventToState(event) async*{
-    if(event is GetImageList){
-      yield* _mapGetImageListToState(event);
+    if(event is testtest){
+      yield* _maptesttestToState(event);
     }
   }
-  Stream<DetailState> _mapGetImageListToState(DetailEvent event) async*{
+  Stream<DetailState> _maptesttestToState(DetailEvent event) async*{
     yield DetailLoading();
     //여기서 데이터 얻어옴
     List<ImageModel> imageData = [

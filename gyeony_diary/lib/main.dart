@@ -17,6 +17,7 @@ import 'package:gyeony_diary/screen/grid_item_screen.dart';
 import 'bloc/detail_bloc.dart';
 import 'bloc/detail_event.dart';
 import 'bloc/grid_item_bloc.dart';
+import 'bloc/grid_item_event.dart';
 import 'bloc/main_bloc.dart';
 import 'bloc/post_bloc.dart';
 import 'bloc/post_event.dart';
@@ -44,7 +45,8 @@ class MyApp extends StatelessWidget {
           LogicalKeySet(LogicalKeyboardKey.arrowDown): const FakeFocusIntent(),
           LogicalKeySet(LogicalKeyboardKey.arrowUp): const FakeFocusIntent(),
         }),
-      debugShowCheckedModeBanner: false,      theme: ThemeData(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       initialRoute: '/',
@@ -53,10 +55,10 @@ class MyApp extends StatelessWidget {
             create: (_) => MainBloc(MainRepo())..add(GetDailyDiaryData()),
             child: MainScreen())),
         GetPage(name: '/post', page: () => BlocProvider(
-            create: (_) => PostBloc(PostRepo())..add(GetDtesttestiaryList()),
+            create: (_) => PostBloc(PostRepo())..add(GetDiaryList()),
             child: PostScreen())),
         GetPage(name: '/detail', page: () => BlocProvider(
-            create: (_) => DetailBloc(DetailRepo())..add(GetImageList()),
+            create: (_) => DetailBloc(DetailRepo())..add(testtest()),
             child: DetailScreen())),
         GetPage(name: '/griditem', page: () => BlocProvider(
             create: (_) => GridItemBloc(GridItemRepo())..add(GetImageList()),
