@@ -26,20 +26,15 @@ class _DetailScreenState extends State<DetailScreen> {
               if(state is DetailLoading){
                 return Center(child: FlareProgress());
               }
-
               if(state is DetailLoaded){
-                return StaggeredGridView.countBuilder(
-                  crossAxisCount: 4,
-                  itemCount: state.list.length-1,
-                  // itemBuilder: (BuildContext context, int index) => CustomTile(index, IntSize(20,40), state.list[index].imageUrl),
-                  itemBuilder: (context, index) => Image.asset(state.list[index].imageUrl,fit: BoxFit.fill,),
-                  mainAxisSpacing: 4.0,
-                  crossAxisSpacing: 4.0,
-                  staggeredTileBuilder: (index) => const StaggeredTile.fit(2),
-
+                return Scaffold(
+                  appBar: AppBar(
+                    title: const Text(''),
+                    backgroundColor: const Color(0xff867ae9),
+                  ),
+                  body: Container(),
                 );
               }
-
               return Container();
             },
           )

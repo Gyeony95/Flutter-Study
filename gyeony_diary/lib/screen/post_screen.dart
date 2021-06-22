@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gyeony_diary/bloc/post_bloc.dart';
@@ -58,7 +59,33 @@ class _PostScreenState extends State<PostScreen> {
                           child: const FlareProgress(),
                         );
                       }
-                      return PostItem(model: state.list[index], openPressed:() =>_postBloc.add(SwitchItemState(index: index)));
+                      return PostItem(model: state.list[index]
+                          , openPressed:() =>_postBloc.add(SwitchItemState(index: index))
+                          , menuPressed:() => showCupertinoModalPopup(
+                          context: context,
+                          builder: (context) => CupertinoActionSheet(
+                            actions: <Widget>[
+                              CupertinoActionSheetAction(
+                                child:
+                                Text('삭제',),
+                                onPressed: () {
+
+                                },
+                              ),
+                              CupertinoActionSheetAction(
+                                child:Text('삭제', style: TextStyle(color: Colors.red),),
+                                onPressed: () {
+                                },
+                              ),
+                            ],
+                            cancelButton: CupertinoActionSheetAction(
+                              isDestructiveAction: true,
+                              child: Text('취소'),
+                              onPressed: () => Navigator.pop(context),
+                            ),
+                          ),
+                        ),
+                      );
                     }
                 ),
               );

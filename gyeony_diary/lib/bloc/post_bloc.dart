@@ -38,47 +38,15 @@ class PostBloc extends Bloc<PostEvent, PostState> {
   }
 
   Stream<PostState> _mapSwitchItemStateToState(PostEvent event) async*{
-    var currentState = state as PostLoaded;
-    var currentEvent = event as SwitchItemState;
     yield PostLoading();
 
-    currentState.copyWith(
-        list: currentState.list.asMap().entries.map((entry) {
-
+    var currentEvent = (event as SwitchItemState);
+    var currentState = (state as PostLoaded).copyWith(
+        list: (state as PostLoaded).list.asMap().entries.map((entry) {
           int idx = entry.key;
-          PostModel val = entry.value;
-          debugPrint('ghghgh  val1 '+val.toString());
-          // idx == currentEvent.index ? val.copyWith(isOpened: currentState.list[currentEvent.index].isOpened ? false : true) :  val;
-          debugPrint('ghghgh  val2 '+val.toString());
-          val.copyWith(isOpened: true);
-          return val;
+          return idx ==currentEvent.index ? entry.value.copyWith(isOpened: (state as PostLoaded).list[currentEvent.index].isOpened ? false : true) :  entry.value;
         }).toList()
     );
-
-    // currentState.list.asMap().entries.map((entry) {
-    //   int idx = entry.key;
-    //   PostModel val = entry.value;
-    //
-    //   idx == currentEvent.index ? val.copyWith(isOpened: currentState.list[currentEvent.index].isOpened ? false : true) :  val;
-    //   return val;
-    // });
-
-    debugPrint('ghghgh'+currentState.list[currentEvent.index].isOpened.toString());
-    // currentState.list[currentEvent.index].copyWith(isOpened: currentState.list[currentEvent.index].isOpened ? false : true);
-    //var newList = currentState.list[currentEvent.index].copyWith(isOpened: true);
-    // var count = 0;
-    // currentState.copyWith(
-    //   list: currentState.list.map((e){
-    //     if(count == currentEvent.index){
-    //       return e.copyWith(isOpened: true);
-    //     }
-    //     return e;
-    //   })
-    // );
-
-
-    debugPrint('ghghgh'+currentState.list[currentEvent.index].isOpened.toString());
-    debugPrint('ghghgh 77 '+ (currentState.list[currentEvent.index].isOpened ? false : true).toString());
 
     yield PostLoaded(list: currentState.list);
   }

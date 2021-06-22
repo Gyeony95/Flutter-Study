@@ -5,12 +5,13 @@ import 'package:gyeony_diary/model/post_model.dart';
 class PostItem extends StatelessWidget {
   final PostModel model;
   final Function openPressed;
-  const PostItem({this.model, this.openPressed});
+  final Function menuPressed;
+  const PostItem({this.model, this.openPressed, this.menuPressed});
 
   @override
   Widget build(BuildContext context) {
     return InkResponse(
-      onTap: () => Get.toNamed('/griditem'),
+      onTap: () => Get.toNamed('/detail'),
       child: Container(
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
@@ -35,7 +36,7 @@ class PostItem extends StatelessWidget {
                 Text(model.time),
                 Spacer(),
                 IconButton(
-                  onPressed: (){},
+                  onPressed: ()=>menuPressed.call(),
                   icon: Icon(
                     Icons.list,
                     color: Colors.black,
