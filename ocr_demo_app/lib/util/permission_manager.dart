@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:ocr_demo_app/navigator_manager.dart';
+import 'package:ocr_demo_app/util/navigator_manager.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class PermissionManager {
