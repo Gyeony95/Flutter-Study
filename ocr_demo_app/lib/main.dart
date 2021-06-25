@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 
 import 'bloc/main_bloc.dart';
 import 'bloc/main_event.dart';
+import 'camera_view.dart';
 import 'main_repo.dart';
 import 'main_screen.dart';
 void main() {
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/', page: () => BlocProvider(
             create: (_) => MainBloc(MainRepo()),
             child: MainScreen())),
+        GetPage(name: '/camera', page: () => CameraPreviewScreen()),
 
         //GetPage(name: '/fullPage', page: FullPageEditorScreen())
 

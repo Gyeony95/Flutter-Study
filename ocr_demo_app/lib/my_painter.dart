@@ -6,13 +6,13 @@ import 'package:flutter/rendering.dart';
 
 class Sky extends CustomPainter {
   final ui.Image image;
-
-  const Sky(this.image);
+  final ui.Rect stateRect;
+  const Sky(this.image, this.stateRect);
 
   @override
   void paint(ui.Canvas canvas, ui.Size size) {
     // final Rect rect  = Rect.fromPoints(Offset(410,1249), Offset(712,1335));
-    final Rect rect  = Rect.fromPoints(Offset(535,1623), Offset(798,1705));
+    // final Rect rect  = Rect.fromPoints(Offset(535,1623), Offset(798,1705));
 
     const RadialGradient gradient = RadialGradient(
       center: Alignment(0.7, -0.6),
@@ -33,9 +33,13 @@ class Sky extends CustomPainter {
 
     canvas.drawImage(image, Offset.zero, Paint());
     // loadUiImage('assets/test.jpeg').then((value) => canvas.drawImage(value, Offset.zero, Paint()));
+    // canvas.drawRect(
+    //   rect,
+    //   Paint()..shader = gradient.createShader(rect),
+    // );
     canvas.drawRect(
-      rect,
-      Paint()..shader = gradient.createShader(rect),
+      stateRect,
+      Paint()..shader = gradient.createShader(stateRect),
     );
   }
 

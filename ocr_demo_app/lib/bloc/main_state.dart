@@ -18,23 +18,17 @@ class MainLoaded extends MainState {
   final Asset image;
   final File file;
   final ui.Image uiImage;
+  final ui.Rect rect;
 
-  const MainLoaded({this.image, this.file, this.uiImage});
+  const MainLoaded({this.image, this.file, this.uiImage, this.rect});
 
-  MainLoaded copyWith({Asset image, File file, ui.Image uiImage}) => MainLoaded(
+  MainLoaded copyWith({Asset image, File file, ui.Image uiImage, ui.Rect rect}) => MainLoaded(
     image: image ?? this.image,
     file:  file ?? this.file,
     uiImage: uiImage ?? this.uiImage,
+    rect: rect ?? this.rect,
   );
 
-  // final List<ImageModel> list;
-  //
-  // const DetailLoaded({
-  //   this.list
-  // });
-  //
-  // DetailLoaded copyWith({List<ImageModel> list}) =>
-  //     DetailLoaded(
-  //       list: list ?? this.list,
-  //     );
+  @override
+  String toString() => '$MainLoaded $image $file $uiImage $rect';
 }

@@ -18,18 +18,24 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     if(event is GetImageData){
       yield* _mapGetImageDataToState(event);
     }
+    // if(event is SetRect){
+    //   yield* _mapSetRectToState(event);
+    // }
+
+
   }
   Stream<MainState> _mapGetImageDataToState(MainEvent event) async*{
     var currentEvent = event as GetImageData;
 
-    // var currentState =( state as MainLoaded).copyWith(file: currentEvent.file, image: currentEvent.image, uiImage: currentEvent.uiImage);
-    log('ghgh 12'+currentEvent.uiImage.width.toString());
-    // log('ghgh 13'+currentState.uiImage.width.toString());
-
-    // yield currentState.copyWith(file: currentEvent.file, image: currentEvent.image, uiImage: currentEvent.uiImage);
-    yield MainLoaded(image: currentEvent.image, file: currentEvent.file, uiImage: currentEvent.uiImage);
-
-
+    yield MainLoaded(image: currentEvent.image, file: currentEvent.file, uiImage: currentEvent.uiImage, rect: currentEvent.rect);
   }
+  // Stream<MainState> _mapSetRectToState(MainEvent event) async*{
+  //   var currentEvent = event as SetRect;
+  //   var currentState = state as MainLoaded;
+  //   yield currentState.copyWith(rect: currentEvent.rect);
+  //   log('ghghgh setRect :'+currentEvent.rect.width.toString());
+  //
+  //   yield MainLoaded(image: currentState.image, file: currentState.file, uiImage: currentState.uiImage, rect: currentEvent.rect);
+  // }
 
 }
