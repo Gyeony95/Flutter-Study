@@ -1,13 +1,12 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gyeony_diary/bloc/grid_item_event.dart';
-import 'package:gyeony_diary/bloc/grid_item_state.dart';
+import 'package:gyeony_diary/bloc/grid_item/grid_item_event.dart';
+import 'package:gyeony_diary/bloc/grid_item/grid_item_state.dart';
 import 'package:gyeony_diary/model/detail_model.dart';
 import 'package:gyeony_diary/repo/detail_repo.dart';
 import 'package:gyeony_diary/repo/grid_item_repo.dart';
 
-import 'detail_event.dart';
-import 'detail_state.dart';
+
 
 class GridItemBloc extends Bloc<GridItemEvent, GridItemState> {
   GridItemBloc(GridItemRepo gridItemRepo) : super(GridItemLoading());

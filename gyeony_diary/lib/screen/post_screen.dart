@@ -3,9 +3,9 @@ import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gyeony_diary/bloc/post_bloc.dart';
-import 'package:gyeony_diary/bloc/post_event.dart';
-import 'package:gyeony_diary/bloc/post_state.dart';
+import 'package:gyeony_diary/bloc/post/post_bloc.dart';
+import 'package:gyeony_diary/bloc/post/post_event.dart';
+import 'package:gyeony_diary/bloc/post/post_state.dart';
 import 'package:gyeony_diary/screen/post_widget.dart';
 import 'package:gyeony_diary/widget/flare_progress.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -42,51 +42,71 @@ class _PostScreenState extends State<PostScreen> {
               return Center(child: FlareProgress());
             }
             if(state is PostLoaded){
-              return Ink(
-                color: const Color(0xfffdfaf6),
-                child: ListView.separated(
-                    separatorBuilder: (context, index) => Divider(
-                      height: 1.0,
-                      thickness: 1.0,
-                      color: Color(0xffe4e4e4),
-                    ),
-                    itemCount: state.list.length,
-                    itemBuilder: (context, index) {
-                      if (index >= state.list.length) {
-                        return Container(
-                          alignment: Alignment.center,
-                          padding: const EdgeInsets.symmetric(vertical: 20.0),
-                          child: const FlareProgress(),
-                        );
-                      }
-                      return PostItem(model: state.list[index]
-                          , openPressed:() =>_postBloc.add(SwitchItemState(index: index))
-                          , menuPressed:() => showCupertinoModalPopup(
-                          context: context,
-                          builder: (context) => CupertinoActionSheet(
-                            actions: <Widget>[
-                              CupertinoActionSheetAction(
-                                child:
-                                Text('삭제',),
-                                onPressed: () {
-
-                                },
-                              ),
-                              CupertinoActionSheetAction(
-                                child:Text('삭제', style: TextStyle(color: Colors.red),),
-                                onPressed: () {
-                                },
-                              ),
-                            ],
-                            cancelButton: CupertinoActionSheetAction(
-                              isDestructiveAction: true,
-                              child: Text('취소'),
-                              onPressed: () => Navigator.pop(context),
-                            ),
-                          ),
+              return Container(
+                child: Column(
+                  children: [
+                    InkResponse(
+                      onTap: (){
+                        //여기에 일기쓰는 화면으로 이동 추가
+                      },
+                      child: Container(
+                        margin: EdgeInsets.all(20),
+                        height: 100,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey, width: 0.5),
                         ),
-                      );
-                    }
+                        child: Center(child: Text('오늘 일기 추가하기!')),
+                      ),
+                    ),
+                    Expanded(
+                      child: ListView.separated(
+                          // shrinkWrap: true, // use this
+                          separatorBuilder: (context, index) => Divider(
+                            height: 1.0,
+                            thickness: 1.0,
+                            color: Color(0xffe4e4e4),
+                          ),
+                          itemCount: state.list.length,
+                          itemBuilder: (context, index) {
+                            if (index >= state.list.length) {
+                              return Container(
+                                alignment: Alignment.center,
+                                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                                child: const FlareProgress(),
+                              );
+                            }
+                            return PostItem(model: state.list[index]
+                              , openPressed:() =>_postBloc.add(SwitchItemState(index: index))
+                              , menuPressed:() => showCupertinoModalPopup(
+                                context: context,
+                                builder: (context) => CupertinoActionSheet(
+                                  actions: <Widget>[
+                                    CupertinoActionSheetAction(
+                                      child:
+                                      Text('삭제',),
+                                      onPressed: () {
+
+                                      },
+                                    ),
+                                    CupertinoActionSheetAction(
+                                      child:Text('삭제', style: TextStyle(color: Colors.red),),
+                                      onPressed: () {
+                                      },
+                                    ),
+                                  ],
+                                  cancelButton: CupertinoActionSheetAction(
+                                    isDestructiveAction: true,
+                                    child: Text('취소'),
+                                    onPressed: () => Navigator.pop(context),
+                                  ),
+                                ),
+                              ),
+                            );
+                          }
+                      ),
+                    )
+                  ],
                 ),
               );
             }

@@ -32,12 +32,6 @@ dependencies:
   rxdart: ^0.27.0
   bloc_test: ^8.0.0
 
-<<<<<<< HEAD
-=======
-  syncfusion_flutter_charts: ^19.1.64
-  flare_flutter: ^3.0.0
->>>>>>> 4f69bc4001f946a3099935f997ba3d572a148e12
-
 
   #http
   dio: ^4.0.0

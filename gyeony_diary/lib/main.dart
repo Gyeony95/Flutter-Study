@@ -5,22 +5,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:gyeony_diary/bloc/main_event.dart';
+import 'package:gyeony_diary/bloc/write/write_bloc.dart';
 import 'package:gyeony_diary/repo/detail_repo.dart';
 import 'package:gyeony_diary/repo/grid_item_repo.dart';
 import 'package:gyeony_diary/repo/main_repo.dart';
 import 'package:gyeony_diary/repo/post_repo.dart';
+import 'package:gyeony_diary/repo/write_repo.dart';
 import 'package:gyeony_diary/screen/detail_screen.dart';
 import 'package:gyeony_diary/screen/main_screen.dart';
 import 'package:gyeony_diary/screen/post_screen.dart';
 import 'package:gyeony_diary/screen/grid_item_screen.dart';
+import 'package:gyeony_diary/screen/write_screen.dart';
 
-import 'bloc/detail_bloc.dart';
-import 'bloc/detail_event.dart';
-import 'bloc/grid_item_bloc.dart';
-import 'bloc/grid_item_event.dart';
+import 'bloc/detail/detail_bloc.dart';
+import 'bloc/detail/detail_event.dart';
+import 'bloc/grid_item/grid_item_bloc.dart';
+import 'bloc/grid_item/grid_item_event.dart';
 import 'bloc/main_bloc.dart';
-import 'bloc/post_bloc.dart';
-import 'bloc/post_event.dart';
+import 'bloc/post/post_bloc.dart';
+import 'bloc/post/post_event.dart';
 
 // Create a Focus Intent that does nothing
 class FakeFocusIntent extends Intent {
@@ -63,6 +66,9 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/griditem', page: () => BlocProvider(
             create: (_) => GridItemBloc(GridItemRepo())..add(GetImageList()),
             child: GridItemScreen())),
+        GetPage(name: '/write', page: () => BlocProvider(
+            create: (_) => WriteBloc(WriteRepo()),
+            child: WriteScreen())),
         //GetPage(name: '/fullPage', page: FullPageEditorScreen())
 
       ],

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:gyeony_diary/bloc/grid_item_bloc.dart';
-import 'package:gyeony_diary/bloc/grid_item_state.dart';
+import 'package:gyeony_diary/bloc/grid_item/grid_item_bloc.dart';
+import 'package:gyeony_diary/bloc/grid_item/grid_item_state.dart';
 import 'package:gyeony_diary/screen/detail_widget.dart';
 import 'dart:ui' as ui;
-import 'package:gyeony_diary/bloc/detail_bloc.dart';
-import 'package:gyeony_diary/bloc/detail_state.dart';
-import 'package:gyeony_diary/bloc/detail_event.dart';
+import 'package:gyeony_diary/bloc/detail/detail_bloc.dart';
+import 'package:gyeony_diary/bloc/detail/detail_state.dart';
+import 'package:gyeony_diary/bloc/detail/detail_event.dart';
 import 'package:gyeony_diary/widget/flare_progress.dart';
 class GridItemScreen extends StatefulWidget {
   @override
