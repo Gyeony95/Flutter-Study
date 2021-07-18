@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:gyeony_diary/bloc/post/post_bloc.dart';
 import 'package:gyeony_diary/bloc/post/post_event.dart';
 import 'package:gyeony_diary/bloc/post/post_state.dart';
@@ -48,6 +49,7 @@ class _PostScreenState extends State<PostScreen> {
                     InkResponse(
                       onTap: (){
                         //여기에 일기쓰는 화면으로 이동 추가
+                        Get.toNamed('/write');
                       },
                       child: Container(
                         margin: EdgeInsets.all(20),

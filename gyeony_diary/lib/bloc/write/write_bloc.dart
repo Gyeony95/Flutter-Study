@@ -5,7 +5,7 @@ import 'package:gyeony_diary/bloc/write/write_state.dart';
 import 'package:gyeony_diary/repo/write_repo.dart';
 
 class WriteBloc extends Bloc<WriteEvent, WriteState> {
-  WriteBloc(WriteRepo detailRepo) : super(WriteLoading());
+  WriteBloc(WriteRepo detailRepo) : super(WriteLoaded());
   WriteRepo detailRepo;
 
   @override
@@ -13,6 +13,13 @@ class WriteBloc extends Bloc<WriteEvent, WriteState> {
     // if(event is testtest){
     //   yield* _maptesttestToState(event);
     // }
+    if(event is ChangeContentText){
+      if(state is WriteLoaded){
+        yield (state as WriteLoaded).copyWith(content: event.content);
+      }
+    }
+
+
   }
   // Stream<WriteState> _maptesttestToState(DetailEvent event) async*{
   //   yield DetailLoading();

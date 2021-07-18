@@ -11,14 +11,22 @@ abstract class WriteState extends Equatable {
 class WriteLoading extends WriteState {}
 
 class WriteLoaded extends WriteState {
-  final List<ImageModel> list;
+  final String content;
 
   const WriteLoaded({
-    this.list
+    this.content
   });
 
-  WriteLoaded copyWith({List<ImageModel> list}) =>
+  WriteLoaded copyWith({String content}) =>
       WriteLoaded(
-        list: list ?? this.list,
+        content: content ?? this.content,
       );
+
+  // WriteLoaded setContent({String content}){
+  //   return copyWith(content: content);
+  // }
+
+
 }
+
+

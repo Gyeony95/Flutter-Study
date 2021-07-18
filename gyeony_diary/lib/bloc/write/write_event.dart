@@ -6,4 +6,10 @@ abstract class WriteEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
-// class testtest extends WriteEvent {}
+class ChangeContentText extends WriteEvent {
+  final String content;
+  const ChangeContentText({this.content});
+
+  @override
+  List<Object> get props => [ content];
+}
