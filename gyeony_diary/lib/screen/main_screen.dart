@@ -15,6 +15,7 @@ import 'package:gyeony_diary/widget/nomal_refresh_header.dart';
 import 'package:gyeony_diary/widget/shadowed_card.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 import 'main_widget.dart';
 
@@ -93,10 +94,16 @@ class _MainScreenState extends State<MainScreen> {
                               children: [
                                 MainHeader(mColor : _mainColor),
 
-                                Text('목표'),
+                                Container(
+                                    padding: EdgeInsets.all(20).copyWith(bottom: 0),
+                                    child: Text('포토카드 등록 현황이에요!', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: const Color(0xffBEBFE6)),)),
                                 ShadowedCard(
                                   margin: EdgeInsets.all(20),
-                                  child: BarChartSample(),
+                                  child: TableCalendar(
+                                    firstDay: DateTime.utc(2010, 10, 16),
+                                    lastDay: DateTime.utc(2030, 3, 14),
+                                    focusedDay: DateTime.now(),
+                                  ),
 
                                   // child: SfCircularChart(
                                   //     title:
@@ -123,9 +130,6 @@ class _MainScreenState extends State<MainScreen> {
                                   //     ]),
                                 ),
 
-                                // ShadowedCard(
-                                //     child:
-                                // ),
                                 Spacer(),
                                 Padding(
                                   padding: EdgeInsets.all(30),
@@ -134,7 +138,8 @@ class _MainScreenState extends State<MainScreen> {
                                         Center(child: Text('여기를 눌러 일기를 써보세요!')),
                                     onTap: () => Get.toNamed('/post'),
                                   ),
-                                )
+                                ),
+                                // CalendarView()
                               ],
                             )),
                       ),
