@@ -13,3 +13,11 @@ class ChangeContentText extends WriteEvent {
   @override
   List<Object> get props => [ content];
 }
+
+class ChangeImagePath extends WriteEvent {
+  final String path;
+  const ChangeImagePath({this.path});
+
+  @override
+  List<Object> get props => [ path];
+}

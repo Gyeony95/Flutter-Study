@@ -19,8 +19,22 @@ class WriteBloc extends Bloc<WriteEvent, WriteState> {
       }
     }
 
+    if(event is ChangeImagePath){
+      if(state is WriteLoaded){
+        yield (state as WriteLoaded).copyWith(imagePath: event.path);
+
+      }
+    }
+
 
   }
+
+  String getImageUrl(){
+    if(state is WriteLoaded){
+      return (state as WriteLoaded).imagePath;
+    }
+  }
+
   // Stream<WriteState> _maptesttestToState(DetailEvent event) async*{
   //   yield DetailLoading();
   //   //여기서 데이터 얻어옴

@@ -96,29 +96,31 @@ class _MainScreenState extends State<MainScreen> {
                                 Text('목표'),
                                 ShadowedCard(
                                   margin: EdgeInsets.all(20),
-                                  child: SfCircularChart(
-                                      title:
-                                          ChartTitle(text: '오늘 일기는 이만큼 쓰셧어요!'),
-                                      //legend: Legend(isVisible: true),
-                                      series: <
-                                          RadialBarSeries<RadialData, String>>[
-                                        RadialBarSeries<RadialData, String>(
-                                            maximumValue: 100,
-                                            cornerStyle: CornerStyle.bothCurve,
-                                            dataSource: state.list,
-                                            xValueMapper:
-                                                (RadialData data, _) =>
-                                                    data.xData,
-                                            yValueMapper:
-                                                (RadialData data, _) =>
-                                                    data.yData,
-                                            dataLabelMapper:
-                                                (RadialData data, _) =>
-                                                    data.text,
-                                            dataLabelSettings:
-                                                DataLabelSettings(
-                                                    isVisible: true)),
-                                      ]),
+                                  child: BarChartSample(),
+
+                                  // child: SfCircularChart(
+                                  //     title:
+                                  //         ChartTitle(text: '오늘 일기는 이만큼 쓰셧어요!'),
+                                  //     //legend: Legend(isVisible: true),
+                                  //     series: <
+                                  //         RadialBarSeries<RadialData, String>>[
+                                  //       RadialBarSeries<RadialData, String>(
+                                  //           maximumValue: 100,
+                                  //           cornerStyle: CornerStyle.bothCurve,
+                                  //           dataSource: state.list,
+                                  //           xValueMapper:
+                                  //               (RadialData data, _) =>
+                                  //                   data.xData,
+                                  //           yValueMapper:
+                                  //               (RadialData data, _) =>
+                                  //                   data.yData,
+                                  //           dataLabelMapper:
+                                  //               (RadialData data, _) =>
+                                  //                   data.text,
+                                  //           dataLabelSettings:
+                                  //               DataLabelSettings(
+                                  //                   isVisible: true)),
+                                  //     ]),
                                 ),
 
                                 // ShadowedCard(

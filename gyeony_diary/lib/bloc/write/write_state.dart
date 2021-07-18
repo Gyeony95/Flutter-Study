@@ -12,14 +12,17 @@ class WriteLoading extends WriteState {}
 
 class WriteLoaded extends WriteState {
   final String content;
+  final String imagePath;
 
   const WriteLoaded({
-    this.content
+    this.content,
+    this.imagePath,
   });
 
-  WriteLoaded copyWith({String content}) =>
+  WriteLoaded copyWith({String content, String imagePath}) =>
       WriteLoaded(
         content: content ?? this.content,
+        imagePath: imagePath ?? this.imagePath,
       );
 
   // WriteLoaded setContent({String content}){

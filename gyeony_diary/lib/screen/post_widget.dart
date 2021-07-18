@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gyeony_diary/model/post_model.dart';
@@ -56,13 +58,13 @@ class PostItem extends StatelessWidget {
               ),
               child:
               !model.isOpened ?
-              Image.asset(
-                model.imageUrl,
+              Image.file(
+                File(model.imageUrl),
                 height: 100,
                 width: MediaQuery.of(context).size.width,
                 fit: BoxFit.none,
-              ) : Image.asset(
-                model.imageUrl,
+              ) : Image.file(
+                File(model.imageUrl),
                 width: MediaQuery.of(context).size.width,
               ),
             ),

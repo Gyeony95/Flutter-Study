@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gyeony_diary/bloc/main_state.dart';
 import 'package:gyeony_diary/bloc/post/post_event.dart';
 import 'package:gyeony_diary/bloc/post/post_state.dart';
 import 'package:gyeony_diary/model/post_model.dart';
+import 'package:gyeony_diary/provider/post_provider.dart';
 import 'package:gyeony_diary/repo/main_repo.dart';
 import 'package:gyeony_diary/repo/post_repo.dart';
 import '../main_event.dart';
@@ -26,15 +29,14 @@ class PostBloc extends Bloc<PostEvent, PostState> {
   Stream<PostState> _mapGetDiaryListToState(PostEvent event) async*{
     yield PostLoading();
     //여기서 데이터 얻어옴
-    List<PostModel> list = [
-      PostModel(time : '4월12일', content : '이것은 첫반째 사진으로 먼가 바다의 집,,?',imageUrl : 'assets/images/default_image.jpeg', isOpened: false),
-      PostModel(time : '4월12일', content : '두번쨰사진은 움 머냐 이',imageUrl : 'assets/images/default_image2.jpeg', isOpened: false),
-      PostModel(time : '4월12일', content : '거이야 이건 일기장 앱이라',imageUrl : 'assets/images/default_image3.jpeg', isOpened: false),
-      PostModel(time : '4월12일', content : '이것은 첫반째 사진으로 먼가 바다의 집,,?',imageUrl : 'assets/images/default_image.jpeg', isOpened: false),
-      PostModel(time : '4월12일', content : '두번쨰사진은 움 머냐 이',imageUrl : 'assets/images/default_image2.jpeg', isOpened: false),
-      PostModel(time : '4월12일', content : '거이야 이건 일기장 앱이라',imageUrl : 'assets/images/default_image3.jpeg', isOpened: false),
-    ];
-    yield PostLoaded(list: list);
+    var provider = PostProvider();
+    var postList = await provider.getPostList();
+    log('GHGHGH postList : '+postList.toString());
+    List<PostModel> addedList = [];
+    for(var i =0; i < postList.length; i++){
+      addedList.add(postList[i].copyWith(isOpened: false));
+    }
+    yield PostLoaded(list: addedList);
   }
 
   Stream<PostState> _mapSwitchItemStateToState(PostEvent event) async*{
@@ -50,4 +52,9 @@ class PostBloc extends Bloc<PostEvent, PostState> {
 
     yield PostLoaded(list: currentState.list);
   }
+
+  // Future<void> _getListFromDB() async {
+  //   var provider = PostProvider();
+  //   provider.getPostList();
+  // }
 }

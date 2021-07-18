@@ -43,27 +43,29 @@ class _PostScreenState extends State<PostScreen> {
               return Center(child: FlareProgress());
             }
             if(state is PostLoaded){
-              return Container(
-                child: Column(
-                  children: [
-                    InkResponse(
-                      onTap: (){
-                        //여기에 일기쓰는 화면으로 이동 추가
-                        Get.toNamed('/write');
-                      },
-                      child: Container(
-                        margin: EdgeInsets.all(20),
-                        height: 100,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey, width: 0.5),
+              return SingleChildScrollView(
+                child: Container(
+                  child: Column(
+                    children: [
+                      InkResponse(
+                        onTap: (){
+                          //여기에 일기쓰는 화면으로 이동 추가
+                          Get.toNamed('/write');
+                        },
+                        child: Container(
+                          margin: EdgeInsets.all(20),
+                          height: 100,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey, width: 0.5),
+                          ),
+                          child: Center(child: Text('오늘 일기 추가하기!')),
                         ),
-                        child: Center(child: Text('오늘 일기 추가하기!')),
                       ),
-                    ),
-                    Expanded(
-                      child: ListView.separated(
-                          // shrinkWrap: true, // use this
+                      ListView.separated(
+                          primary: false,
+                          shrinkWrap: true, // use this
+                          physics: NeverScrollableScrollPhysics(),
                           separatorBuilder: (context, index) => Divider(
                             height: 1.0,
                             thickness: 1.0,
@@ -106,9 +108,9 @@ class _PostScreenState extends State<PostScreen> {
                               ),
                             );
                           }
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               );
             }
