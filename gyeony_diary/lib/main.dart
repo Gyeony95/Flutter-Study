@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
+      initialRoute: '/post',//임시로 넣어놓음 나중에 다시 수정
       getPages: [
         GetPage(name: '/', page: () => BlocProvider(
             create: (_) => MainBloc(MainRepo())..add(GetDailyDiaryData()),

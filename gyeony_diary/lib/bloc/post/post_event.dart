@@ -18,3 +18,11 @@ class SwitchItemState extends PostEvent {
   @override
   List<Object> get props => [ index];
 }
+
+class DeleteItem extends PostEvent {
+  final int id;
+  const DeleteItem({this.id});
+  @override
+  List<Object> get props => [ id];
+}
+

@@ -13,7 +13,7 @@ class PostItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkResponse(
-      onTap: () => Get.toNamed('/detail'),
+      // onTap: () => Get.toNamed('/detail'),
       child: Container(
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(

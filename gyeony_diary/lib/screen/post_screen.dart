@@ -3,10 +3,12 @@ import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:gyeony_diary/bloc/post/post_bloc.dart';
 import 'package:gyeony_diary/bloc/post/post_event.dart';
 import 'package:gyeony_diary/bloc/post/post_state.dart';
+import 'package:gyeony_diary/provider/post_provider.dart';
 import 'package:gyeony_diary/screen/post_widget.dart';
 import 'package:gyeony_diary/widget/flare_progress.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -17,7 +19,7 @@ class PostScreen extends StatefulWidget {
   _PostScreenState createState() => _PostScreenState();
 }
 
-class _PostScreenState extends State<PostScreen> {
+class _PostScreenState extends State<PostScreen> with WidgetsBindingObserver{
   PostBloc _postBloc;
 
   @override
@@ -25,6 +27,12 @@ class _PostScreenState extends State<PostScreen> {
     super.initState();
     _postBloc = context.read<PostBloc>();
 
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    _postBloc.add(GetDiaryList());
   }
 
   @override
@@ -89,15 +97,23 @@ class _PostScreenState extends State<PostScreen> {
                                     CupertinoActionSheetAction(
                                       child:
                                       Text('삭제',),
-                                      onPressed: () {
-
+                                      onPressed: () async{
+                                        // _deleteDB(index);
+                                        _postBloc.add(DeleteItem(id: state.list[index].id));
+                                        // _postBloc.add(GetDiaryList());
+                                        await Fluttertoast.showToast(
+                                          msg: '포토카드 삭제가 완료되었습니다!',
+                                          toastLength: Toast.LENGTH_LONG,
+                                          timeInSecForIosWeb: 5,
+                                        );
+                                        Navigator.pop(context);
                                       },
                                     ),
-                                    CupertinoActionSheetAction(
-                                      child:Text('삭제', style: TextStyle(color: Colors.red),),
-                                      onPressed: () {
-                                      },
-                                    ),
+                                    // CupertinoActionSheetAction(
+                                    //   child:Text('삭제', style: TextStyle(color: Colors.red),),
+                                    //   onPressed: () {
+                                    //   },
+                                    // ),
                                   ],
                                   cancelButton: CupertinoActionSheetAction(
                                     isDestructiveAction: true,
@@ -117,6 +133,11 @@ class _PostScreenState extends State<PostScreen> {
             return Center();
           },
         ));
+  }
+
+  Future<void> _deleteDB(int id) async {
+    var provider = PostProvider();
+    provider.delete(id);
   }
 }
 

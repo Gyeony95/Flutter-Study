@@ -48,6 +48,14 @@ class PostProvider {
     return postModel;
   }
 
+  Future<void> delete(int id) async {
+    final db = await database;
+    print('ghghgh' + id.toString());
+    await db.delete(tableName, where: 'id = ?', whereArgs: [id]);
+    // await db.delete(tableName, where: 'content = ?', whereArgs: ['1']);
+
+  }
+
   Future<List<PostModel>> getPostList() async {
     final db = await database;
     List<Map> maps = await db.query(tableName,

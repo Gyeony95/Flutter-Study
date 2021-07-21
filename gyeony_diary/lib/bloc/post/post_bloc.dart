@@ -24,6 +24,10 @@ class PostBloc extends Bloc<PostEvent, PostState> {
       yield* _mapSwitchItemStateToState(event);
 
     }
+    if(event is DeleteItem){
+      yield* _mapDeleteItemStateToState(event);
+
+    }
   }
 
   Stream<PostState> _mapGetDiaryListToState(PostEvent event) async*{
@@ -37,6 +41,15 @@ class PostBloc extends Bloc<PostEvent, PostState> {
       addedList.add(postList[i].copyWith(isOpened: false));
     }
     yield PostLoaded(list: addedList);
+  }
+
+  Stream<PostState> _mapDeleteItemStateToState(PostEvent event) async*{
+    yield PostLoading();
+    //여기서 데이터 얻어옴
+    var provider = PostProvider();
+    await provider.delete((event as DeleteItem).id).then((value) => add(GetDiaryList())) ;
+    // add(GetDiaryList());
+    // yield PostLoaded(list: addedList);
   }
 
   Stream<PostState> _mapSwitchItemStateToState(PostEvent event) async*{
