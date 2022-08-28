@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_report/pages/01_animation_example_page.dart';
+import 'package:flutter_report/feature/01_animation_example/animation_example_page.dart';
+import 'package:flutter_report/feature/02_auto_scroll_with_tabbar_exmaple/auto_scroll_with_tabbar_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,16 +13,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const FeatureList(),
-        FeatureEnum.animationExample.route: (context) => const AnimationExample(),
-      },
+    return ScreenUtilInit(
+      designSize: const Size(360,690),
+      builder: (BuildContext context, Widget? child) {
+        return MaterialApp(
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          initialRoute: '/',
+          routes: {
+            '/': (context) => const FeatureList(),
+            FeatureEnum.animationExample.route: (context) => const AnimationExample(),
+            FeatureEnum.autoScrollWithTabBar.route: (context) => const AutoScrollWithTabbarPage(),
+          },
 
+        );
+      },
     );
   }
 }
@@ -70,6 +78,7 @@ class _FeatureListState extends State<FeatureList> {
 
 enum FeatureEnum{
   animationExample,
+  autoScrollWithTabBar,
 }
 
 extension FeatureEnumExtention on FeatureEnum{
@@ -78,12 +87,16 @@ extension FeatureEnumExtention on FeatureEnum{
     switch(this){
       case FeatureEnum.animationExample :
         return '/animation_example';
+      case FeatureEnum.autoScrollWithTabBar :
+        return '/auto_scroll_with_tabBar';
     }
   }
   String get name{
     switch(this){
       case FeatureEnum.animationExample :
         return '애니메이션 예제';
+      case FeatureEnum.autoScrollWithTabBar :
+        return '탭바 스크롤 자동 이동';
     }
   }
 }

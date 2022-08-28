@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_report/main.dart';
 
 class AnimationExample extends StatefulWidget{
   const AnimationExample({Key? key}) : super(key: key);
@@ -35,7 +36,7 @@ class _AnimationExampleState extends State<AnimationExample>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('애니메이션 예제'),),
+      appBar: AppBar(title: Text(FeatureEnum.animationExample.name),),
       body: Stack(
         children: [
           Column(
