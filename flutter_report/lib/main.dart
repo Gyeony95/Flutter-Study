@@ -103,7 +103,7 @@ extension FeatureEnumExtention on FeatureEnum{
       case FeatureEnum.autoScrollWithTabBar :
         return '탭바 스크롤 자동 이동';
       case FeatureEnum.colorChangeAppbar :
-        return '색이 바뀌는 앱바';
+        return '스크롤시 색이 바뀌는 앱바';
     }
   }
 }
