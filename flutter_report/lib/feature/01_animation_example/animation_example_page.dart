@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_report/feature/main_frame.dart';
 import 'package:flutter_report/main.dart';
 
 class AnimationExample extends StatefulWidget{
@@ -35,24 +36,21 @@ class _AnimationExampleState extends State<AnimationExample>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(FeatureEnum.animationExample.name),),
-      body: Stack(
-        children: [
-          Column(
-            children: [
-              topContainer(),
-              middleContainer(),
-              bottomContainer(),
-            ],
-          ),
-          Positioned(
+    return MainFrame(route: FeatureEnum.animation, child: Stack(
+      children: [
+        Column(
+          children: [
+            topContainer(),
+            middleContainer(),
+            bottomContainer(),
+          ],
+        ),
+        Positioned(
             bottom: 50,
             right: 20,
             child: runButton())
-        ],
-      ),
-    );
+      ],
+    ));
   }
 
   Widget topContainer(){

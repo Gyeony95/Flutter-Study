@@ -37,7 +37,6 @@ class _ColorChangeAppbarPageState extends State<ColorChangeAppbarPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(title: Text(FeatureEnum.colorChangeAppbar.name),),
       body: NotificationListener<ScrollNotification>(
         onNotification: _scrollListener,
         child: SizedBox(

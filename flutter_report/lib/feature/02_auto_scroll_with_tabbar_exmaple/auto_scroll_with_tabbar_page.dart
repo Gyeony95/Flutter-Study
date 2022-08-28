@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_report/feature/02_auto_scroll_with_tabbar_exmaple/anchor_posotion_mixin.dart';
+import 'package:flutter_report/feature/main_frame.dart';
 import 'package:flutter_report/main.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -61,16 +62,15 @@ class _AutoScrollWithTabbarPageState extends State<AutoScrollWithTabbarPage>
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       postFrameCallback();
     });
-
-    return Scaffold(
-      appBar: AppBar(title: Text(FeatureEnum.autoScrollWithTabBar.name),),
-      body: CustomScrollView(
+    return MainFrame(
+        route: FeatureEnum.autoScrollWithTabBar,
+        child: CustomScrollView(
         physics: const ClampingScrollPhysics(),
         controller: scrollController,
         slivers: [
           _tabBar(),
           ...List.generate(TabBarCategory.values.length,
-                  (index) => _area(TabBarCategory.values[index]),
+                (index) => _area(TabBarCategory.values[index]),
           )
         ],
       ),
