@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_report/feature/01_animation_example/animation_example_page.dart';
 import 'package:flutter_report/feature/02_auto_scroll_with_tabbar_exmaple/auto_scroll_with_tabbar_page.dart';
 import 'package:flutter_report/feature/03_color_change_appbar_example/color_change_appbar_page.dart';
+import 'package:flutter_report/feature/04_image_page_slider_example/image_page_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
             FeatureEnum.animationExample.route: (context) => const AnimationExample(),
             FeatureEnum.autoScrollWithTabBar.route: (context) => const AutoScrollWithTabbarPage(),
             FeatureEnum.colorChangeAppbar.route: (context) => const ColorChangeAppbarPage(),
+            FeatureEnum.imagePageSlider.route: (context) => const ImagePageSlider(),
           },
 
         );
@@ -81,7 +83,8 @@ class _FeatureListState extends State<FeatureList> {
 enum FeatureEnum{
   animationExample('/animation_example', '애니메이션 예제'),
   autoScrollWithTabBar('/auto_scroll_with_tabBar', '탭바 스크롤 자동 이동'),
-  colorChangeAppbar('/color_change_appbar', '스크롤시 색이 바뀌는 앱바');
+  colorChangeAppbar('/color_change_appbar', '스크롤시 색이 바뀌는 앱바'),
+  imagePageSlider('/image_page_slider', '이미지 슬라이더');
 
   final String route;
   final String name;
