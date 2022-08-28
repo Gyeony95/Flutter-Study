@@ -79,31 +79,15 @@ class _FeatureListState extends State<FeatureList> {
 
 
 enum FeatureEnum{
-  animationExample,
-  autoScrollWithTabBar,
-  colorChangeAppbar,
-}
+  animationExample('/animation_example', '애니메이션 예제'),
+  autoScrollWithTabBar('/auto_scroll_with_tabBar', '탭바 스크롤 자동 이동'),
+  colorChangeAppbar('/color_change_appbar', '스크롤시 색이 바뀌는 앱바');
 
+  final String route;
+  final String name;
+  const FeatureEnum(this.route, this.name);
+
+}
 extension FeatureEnumExtention on FeatureEnum{
   VoidCallback onTap(BuildContext context) => (){Navigator.pushNamed(context, route);};
-  String get route{
-    switch(this){
-      case FeatureEnum.animationExample :
-        return '/animation_example';
-      case FeatureEnum.autoScrollWithTabBar :
-        return '/auto_scroll_with_tabBar';
-      case FeatureEnum.colorChangeAppbar :
-        return '/color_change_appbar';
-    }
-  }
-  String get name{
-    switch(this){
-      case FeatureEnum.animationExample :
-        return '애니메이션 예제';
-      case FeatureEnum.autoScrollWithTabBar :
-        return '탭바 스크롤 자동 이동';
-      case FeatureEnum.colorChangeAppbar :
-        return '스크롤시 색이 바뀌는 앱바';
-    }
-  }
 }
