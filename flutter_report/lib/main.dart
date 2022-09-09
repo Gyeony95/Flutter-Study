@@ -4,6 +4,7 @@ import 'package:flutter_report/feature/02_auto_scroll_with_tabbar_exmaple/auto_s
 import 'package:flutter_report/feature/03_color_change_appbar_example/color_change_appbar_page.dart';
 import 'package:flutter_report/feature/04_image_page_slider_example/image_page_slider.dart';
 import 'package:flutter_report/feature/05_graph_example/graph_page.dart';
+import 'package:flutter_report/feature/06_expansion_child_example/expansion_child_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
             FeatureEnum.colorChangeAppbar.route: (context) => const ColorChangeAppbarPage(),
             FeatureEnum.imagePageSlider.route: (context) => const ImagePageSlider(),
             FeatureEnum.graph.route: (context) => const GraphPage(),
+            FeatureEnum.expansionChild.route: (context) => const ExpansionChildPage(),
           },
 
         );
@@ -87,7 +89,8 @@ enum FeatureEnum{
   autoScrollWithTabBar('/auto_scroll_with_tabBar', '탭바 스크롤 자동 이동'),
   colorChangeAppbar('/color_change_appbar', '스크롤시 색이 바뀌는 앱바'),
   imagePageSlider('/image_page_slider', '이미지 슬라이더'),
-  graph('/graph', '그래프');
+  graph('/graph', '그래프'),
+  expansionChild('/expanded_child', '자식 확장 시키기');
 
   final String route;
   final String name;
