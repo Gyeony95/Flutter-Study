@@ -13,6 +13,7 @@ class _ExpansionChildPageState extends State<ExpansionChildPage> with TickerProv
   static final Animatable<double> _easeInTween = CurveTween(curve: Curves.easeIn);
   late AnimationController _controller;
   late Animation<double> _heightFactor;
+  late Animation<double> _arrowRotate;
   bool _isExpanded = false;
 
   @override
@@ -20,6 +21,8 @@ class _ExpansionChildPageState extends State<ExpansionChildPage> with TickerProv
     super.initState();
     _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 300));
     _heightFactor = _controller.drive(_easeInTween);
+    _arrowRotate = Tween<double>(begin: 0.0, end: 0.5)
+        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeInCubic));
     if (_isExpanded) {
       _controller.value = 1.0;
     }
@@ -52,7 +55,10 @@ class _ExpansionChildPageState extends State<ExpansionChildPage> with TickerProv
           const Spacer(),
           GestureDetector(
             onTap: () => _handleTap(),
-            child: const Icon(Icons.keyboard_arrow_down, size: 20,),
+            child: RotationTransition(
+              turns: _arrowRotate,
+              child: const Icon(Icons.keyboard_arrow_down, size: 20,),
+            ),
           ),
         ],
       ),
