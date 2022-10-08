@@ -49,15 +49,65 @@ class FeatureList extends StatefulWidget {
 }
 
 class _FeatureListState extends State<FeatureList> {
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('플러터 기능 리스트'),),
       body: SafeArea(
-        child: ListView.builder(
-          itemCount: FeatureEnum.values.length,
-          itemBuilder : listItem,
+        top: false,
+        child: CustomScrollView(
+          physics: const ClampingScrollPhysics(),
+          controller: _scrollController,
+          slivers: [
+            _appBar(),
+            _buildBody(),
+          ],
         ),
+      ),
+    );
+  }
+
+  Widget _appBar(){
+    return SliverAppBar(
+      pinned: true,
+      elevation: 0.0, //appBar 그림자 농도 설정 (값 0으로 제거)
+      expandedHeight: 100.w,
+      automaticallyImplyLeading: false,
+      title: Container(
+        width: MediaQuery.of(context).size.width,
+        color: const Color(0xff03fadd),
+      ),
+      flexibleSpace: FlexibleSpaceBar(
+        stretchModes: const [StretchMode.fadeTitle],
+        collapseMode: CollapseMode.pin,
+        background: Container(
+          height: 120.w,
+          decoration: BoxDecoration(
+            color: Colors.brown,
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(12.w),
+              bottomRight: Radius.circular(12.w),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBody(){
+    return SliverToBoxAdapter(
+      child: ListView.builder(
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: FeatureEnum.values.length,
+        itemBuilder : listItem,
       ),
     );
   }
