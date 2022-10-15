@@ -5,6 +5,9 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:henry_some_one/animated_player.dart';
 import 'package:henry_some_one/game_background.dart';
+import 'package:henry_some_one/item.dart';
+import 'package:henry_some_one/item_list_bottom_sheet.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class HenrySomeOneGame extends StatefulWidget {
   const HenrySomeOneGame({Key? key}) : super(key: key);
@@ -14,30 +17,50 @@ class HenrySomeOneGame extends StatefulWidget {
 }
 
 class _HenrySomeOneGameState extends State<HenrySomeOneGame> {
+
+  List<int> list = [];
+
   @override
   Widget build(BuildContext context) {
-    return GameWidget.controlled(
-      gameFactory: MyStaticGame.new,
-      loadingBuilder: (context) => const Material(
-        child: Center(
-          child: CircularProgressIndicator(),
+    return SlidingUpPanel(
+      minHeight: 70,
+      borderRadius: BorderRadius.circular(20),
+      panel: ItemListBottomSheet(onTapItem: onTapItem ,),
+      body: GameWidget.controlled(
+        gameFactory: () => MyStaticGame(list : list),
+        loadingBuilder: (context) => const Material(
+          child: Center(
+            child: CircularProgressIndicator(),
+          ),
         ),
-      ),
-      errorBuilder: (context, ex) => const Material(
-        child: Center(
-          child: Text('에러났슈'),
+        errorBuilder: (context, ex) => const Material(
+          child: Center(
+            child: Text('에러났슈'),
+          ),
         ),
       ),
     );
   }
+
+  void onTapItem(int index){
+    debugPrint(index.toString());
+    if(list.contains(index)) return;
+    list.add(index);
+    setState(() {
+
+    });
+  }
 }
 
 class MyStaticGame extends FlameGame with HasCollisionDetection {
+
+  List<int> list;
+  MyStaticGame({required this.list});
+
   @override
   Color backgroundColor() => const Color(0x00000000);
 
   final GameBackGround _backGround = GameBackGround();
-
   @override
   Future<void> onLoad() async {
     // 화면 고정
@@ -50,5 +73,13 @@ class MyStaticGame extends FlameGame with HasCollisionDetection {
     final playerPosition = Vector2(200, 600);
     // 플레이어의 위치 및 사이즈 input
     add(AnimatedPlayer(playerPosition, playerSize));
+  }
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+    if(list.isEmpty) return;
+    Vector2 position = Vector2(list.last * 50, 100);
+    add(Item(position, index: list.last));
   }
 }
