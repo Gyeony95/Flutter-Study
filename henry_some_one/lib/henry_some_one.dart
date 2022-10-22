@@ -1,12 +1,14 @@
 library henry_some_one;
 
-import 'package:flame/components.dart';
+import 'dart:math';
+
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:henry_some_one/animated_player.dart';
 import 'package:henry_some_one/game_background.dart';
 import 'package:henry_some_one/item.dart';
 import 'package:henry_some_one/item_list_bottom_sheet.dart';
+import 'package:henry_some_one/pet_component.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class HenrySomeOneGame extends StatefulWidget {
@@ -59,18 +61,25 @@ class MyStaticGame extends FlameGame with HasCollisionDetection {
   Color backgroundColor() => const Color(0x00000000);
 
   final GameBackGround _backGround = GameBackGround();
+  // 플레이어의 사이즈
+  final playerSize = Vector2(150, 100);
+  // 플레이어의 위치
+  final playerPosition = Vector2(200, 600);
+  // 펫의 사이즈
+  final petSize = Vector2(64, 64);
+  // 펫의 위치
+  final petPosition = Vector2(200, 700);
+
   @override
   Future<void> onLoad() async {
     // 화면 고정
-    add(ScreenHitbox());
+    // await add(ScreenHitbox());
     await add(_backGround);
-
-    // 플레이어의 사이즈
-    final playerSize = Vector2(150, 100);
-    // 플레이어의 위치
-    final playerPosition = Vector2(200, 600);
     // 플레이어의 위치 및 사이즈 input
-    add(AnimatedPlayer(playerPosition, playerSize));
+    await add(AnimatedPlayer(playerPosition, playerSize));
+    await add(
+      PetComponent(Vector2(-100, 0), petPosition, petSize, angle: pi),
+    );
   }
 
   @override
