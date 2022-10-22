@@ -23,8 +23,8 @@ class _HenrySomeOneGameState extends State<HenrySomeOneGame> {
   @override
   Widget build(BuildContext context) {
     return SlidingUpPanel(
-      minHeight: 70,
-      borderRadius: BorderRadius.circular(20),
+      minHeight: 40,
+      borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
       panel: ItemListBottomSheet(onTapItem: onTapItem ,),
       body: GameWidget.controlled(
         gameFactory: () => MyStaticGame(list : list),
@@ -46,9 +46,7 @@ class _HenrySomeOneGameState extends State<HenrySomeOneGame> {
     debugPrint(index.toString());
     if(list.contains(index)) return;
     list.add(index);
-    setState(() {
-
-    });
+    setState(() {});
   }
 }
 
