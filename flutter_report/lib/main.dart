@@ -5,6 +5,7 @@ import 'package:flutter_report/feature/03_color_change_appbar_example/color_chan
 import 'package:flutter_report/feature/04_image_page_slider_example/image_page_slider.dart';
 import 'package:flutter_report/feature/05_graph_example/graph_page.dart';
 import 'package:flutter_report/feature/06_expansion_child_example/expansion_child_page.dart';
+import 'package:flutter_report/feature/07_musinsa_page_view/musinsa_page_view_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
             FeatureEnum.imagePageSlider.route: (context) => const ImagePageSlider(),
             FeatureEnum.graph.route: (context) => const GraphPage(),
             FeatureEnum.expansionChild.route: (context) => const ExpansionChildPage(),
+            FeatureEnum.musinsaPageView.route: (context) => const MusinsaPageViewPage(),
           },
 
         );
@@ -140,7 +142,8 @@ enum FeatureEnum{
   colorChangeAppbar('/color_change_appbar', '스크롤시 색이 바뀌는 앱바'),
   imagePageSlider('/image_page_slider', '이미지 슬라이더'),
   graph('/graph', '그래프'),
-  expansionChild('/expanded_child', '자식 확장 시키기');
+  expansionChild('/expanded_child', '자식 확장 시키기'),
+  musinsaPageView('/misinsa_page_view', '무신사 페이지뷰');
 
   final String route;
   final String name;
