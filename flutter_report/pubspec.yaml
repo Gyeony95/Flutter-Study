@@ -41,6 +41,7 @@ dependencies:
   #UI
   fl_chart: ^0.55.1
 
+#  stacked_listview: ^1.0.3+2
 
 dev_dependencies:
   flutter_test:

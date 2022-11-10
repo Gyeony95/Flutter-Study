@@ -17,7 +17,6 @@ class CustomScrollPhysics extends ScrollPhysics {
   }
 
   double _getPage(ScrollMetrics position) {
-    debugPrint('ghghgh ${position.pixels}, $itemDimension');
     return position.pixels / itemDimension;
   }
 
