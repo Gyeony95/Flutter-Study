@@ -7,6 +7,7 @@ import 'package:flutter_report/feature/05_graph_example/graph_page.dart';
 import 'package:flutter_report/feature/06_expansion_child_example/expansion_child_page.dart';
 import 'package:flutter_report/feature/07_musinsa_page_view/musinsa_page_view_page.dart';
 import 'package:flutter_report/feature/08_stackable_list/stackable_list_page.dart';
+import 'package:flutter_report/feature/09_isolate/isolate_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
             FeatureEnum.expansionChild.route: (context) => const ExpansionChildPage(),
             FeatureEnum.musinsaPageView.route: (context) => const MusinsaPageViewPage(),
             FeatureEnum.stackableList.route: (context) => const StackableListPage(),
+            FeatureEnum.isolate.route: (context) => const IsolatePage(),
           },
 
         );
@@ -146,7 +148,8 @@ enum FeatureEnum{
   graph('/graph', '그래프'),
   expansionChild('/expanded_child', '자식 확장 시키기'),
   musinsaPageView('/misinsa_page_view', '무신사 페이지뷰'),
-  stackableList('/stackable_list', '쌓이는 리스트');
+  stackableList('/stackable_list', '쌓이는 리스트'),
+  isolate('/isolate', '아이솔레이트');
 
   final String route;
   final String name;

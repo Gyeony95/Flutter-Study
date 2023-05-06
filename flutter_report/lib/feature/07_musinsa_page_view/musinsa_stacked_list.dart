@@ -1,0 +1,137 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_report/feature/07_musinsa_page_view/msinsa_list_item.dart';
+
+class MusinsaStackedList extends StatefulWidget {
+  final Axis scrollDirection;
+  final IndexedWidgetBuilder builder;
+  final EdgeInsetsGeometry? padding;
+  final ScrollController? controller;
+  final ScrollPhysics? physics;
+
+  /// Item count
+  final int itemCount;
+
+  /// [scrollDirection] 이 Axis.vertical 이면 높이
+  /// [scrollDirection] 이 Axis.horizontal 이면 너비
+  final double itemExtent;
+
+  /// 0.0 ~ 1.0
+  final double fadeOutFrom;
+
+  /// 0.0 ~ 1.0
+  final double heightFactor;
+
+  /// 0.0 ~ 1.0
+  final double widthFactor;
+
+  const MusinsaStackedList({
+    Key? key,
+    required this.itemCount,
+    required this.builder,
+    this.scrollDirection = Axis.vertical,
+    this.padding,
+    this.controller,
+    this.physics,
+    required this.itemExtent,
+    this.fadeOutFrom = 0.7,
+    this.heightFactor = 1,
+    this.widthFactor = 1,
+  })  : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => MusinsaStackedListState();
+}
+
+class MusinsaStackedListState extends State<MusinsaStackedList> {
+  late final ScrollController controller;
+
+  @override
+  void initState() {
+    controller = widget.controller ?? ScrollController();
+    controller.addListener(_update);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.removeListener(_update);
+    super.dispose();
+  }
+
+  void _update() {
+    setState(() {});
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final realExtent = widget.itemExtent *
+        (widget.scrollDirection == Axis.horizontal
+            ? widget.widthFactor
+            : widget.heightFactor);
+    return Stack(children: [
+      ListView.builder(
+          scrollDirection: widget.scrollDirection,
+          padding: widget.padding,
+          controller: controller,
+          itemCount: widget.itemCount,
+          physics: widget.physics ?? const BouncingScrollPhysics(),
+          itemBuilder: (context, index) {
+            double scroll =
+            ((controller.offset - index * realExtent) / realExtent);
+            // ((controller.offset - index * realExtent) / realExtent);
+            double currentScroll = scroll.clamp(0.0, 1.0);
+            debugPrint('ghghgh$index ${controller.offset} $scroll,  $currentScroll, $realExtent');
+            double opacity = 1.0;
+            double offset = 0;
+            bool atFirst = false;
+
+            // if (currentScroll > 0 || (index == 0 && controller.offset <= 0)) {
+            //   if (currentScroll < 1) {
+            //     atFirst = true;
+            //   }
+            //   // if (currentScroll >= widget.fadeOutFrom) {
+            //   //   if (widget.fadeOutFrom == 1) {
+            //   //     opacity = 0;
+            //   //   } else {
+            //   //     final fadeOut =
+            //   //     ((1 - currentScroll) / (1.0 - widget.fadeOutFrom))
+            //   //         .clamp(0.0, 1.0);
+            //   //     opacity = lerpDouble(0.0, 1.0, fadeOut)!;
+            //   //   }
+            //   // }
+            //   offset = (currentScroll * realExtent).roundToDouble();
+            //   // debugPrint('ghghgh1 $currentScroll, $realExtent');
+            //   // debugPrint('ghghgh2 $offset');
+            //
+            // }
+            // opacity = opacity.clamp(0.0, 1.0);
+            if(scroll.isNegative){
+              offset = ((scroll.clamp(0.0, 1.0)) * realExtent).roundToDouble();
+            }else{
+              offset = ((scroll.clamp(0.0, 1.0)) * realExtent).roundToDouble();
+            }
+
+            return MusinsaListItem(
+              key: UniqueKey(),
+              scrollDirection: widget.scrollDirection,
+              atFirst: atFirst,
+              lastOne: index == (widget.itemCount - 1),
+              index: index,
+              offset: offset,
+              opacity: opacity,
+              widthFactor: widget.widthFactor,
+              heightFactor: widget.heightFactor,
+              child: SizedBox(
+                width: widget.scrollDirection == Axis.vertical
+                    ? double.infinity
+                    : widget.itemExtent,
+                height: widget.scrollDirection == Axis.vertical
+                    ? widget.itemExtent
+                    : double.infinity,
+                child: widget.builder(context, index),
+              ),
+            );
+          }),
+    ]);
+  }
+}
